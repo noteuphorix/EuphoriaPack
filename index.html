@@ -21,7 +21,7 @@
       line-height: 1.6;
       max-width: 900px;
       margin: 0 auto;
-      padding: 40px 20px 0px 20px; /* Removed bottom padding for the footer */
+      padding: 40px 20px 0px 20px;
     }
 
     h1 {
@@ -37,7 +37,7 @@
       display: flex;
       flex-direction: column;
       gap: 25px;
-      margin-bottom: 60px; /* Space before the footer */
+      margin-bottom: 60px;
     }
 
     .step-card {
@@ -134,7 +134,6 @@
       font-size: 0.95em;
     }
 
-    /* Footer Fingerprint Key Styling */
     .footer-key {
       background-color: var(--danger);
       color: #fff;
@@ -200,7 +199,8 @@
 
     <div class="step-card">
       <h2>3. Join the Server</h2>
-      <p>Follow the automated instructions in PowerShell. Once complete, the server will automatically appear in your Minecraft server list!</p>
+      <p>Follow the automated instructions in PowerShell. Once complete, the server should automatically appear in your Minecraft server list!</p>
+      <p><strong>If the server does not appear:</strong> You can manually add it using the server IP: <code style="color: var(--accent);">mc.narwal.llc</code></p>
     </div>
 
     <div class="note-box">
@@ -218,11 +218,8 @@
     function copyText(elementId, btn, originalText) {
       const text = document.getElementById(elementId).innerText;
       navigator.clipboard.writeText(text).then(() => {
-        // Change button state
         btn.innerText = (elementId === 'fingerprint') ? 'Key Copied!' : 'Copied!';
-        const originalBg = btn.style.backgroundColor;
-        const originalColor = btn.style.color;
-
+        
         if(elementId !== 'fingerprint') {
           btn.style.backgroundColor = '#28a745';
           btn.style.color = '#fff';
@@ -231,7 +228,6 @@
           btn.style.color = '#8b0000';
         }
         
-        // Reset button state
         setTimeout(() => {
           btn.innerText = originalText;
           if(elementId !== 'fingerprint') {
