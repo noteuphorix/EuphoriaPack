@@ -11,6 +11,7 @@
       --card-bg: #161616;
       --text: #e0e0e0;
       --accent: #66d9ef;
+      --danger: #8b0000; /* Deep Red for the footer */
     }
 
     body {
@@ -20,7 +21,7 @@
       line-height: 1.6;
       max-width: 900px;
       margin: 0 auto;
-      padding: 40px 20px;
+      padding: 40px 20px 0px 20px; /* Removed bottom padding for the footer */
     }
 
     h1 {
@@ -36,6 +37,7 @@
       display: flex;
       flex-direction: column;
       gap: 25px;
+      margin-bottom: 60px; /* Space before the footer */
     }
 
     .step-card {
@@ -63,7 +65,6 @@
       margin: 10px 0;
     }
 
-    /* Command Container Styling */
     .command-box {
       background-color: #000;
       padding: 12px 18px;
@@ -132,6 +133,43 @@
       border-radius: 4px;
       font-size: 0.95em;
     }
+
+    /* Footer Fingerprint Key Styling */
+    .footer-key {
+      background-color: var(--danger);
+      color: #fff;
+      text-align: center;
+      padding: 20px;
+      margin-top: 40px;
+      border-radius: 12px 12px 0 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .key-text {
+      font-size: 0.8em;
+      opacity: 0.7;
+      word-break: break-all;
+      max-width: 600px;
+      font-family: monospace;
+    }
+
+    .key-btn {
+      background: rgba(255,255,255,0.2);
+      border: 1px solid #fff;
+      color: #fff;
+      padding: 8px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: all 0.2s;
+    }
+
+    .key-btn:hover {
+      background: rgba(255,255,255,0.3);
+    }
   </style>
 </head>
 <body>
@@ -156,7 +194,7 @@
       <p>Copy and paste the command below into your PowerShell window and press <strong>Enter</strong>.</p>
       <div class="command-box">
         <code id="cmdText">irm mcinstall.narwal.llc | iex</code>
-        <button class="copy-btn" onclick="copyCommand()">Copy</button>
+        <button class="copy-btn" onclick="copyText('cmdText', this, 'Copy')">Copy</button>
       </div>
     </div>
 
@@ -170,19 +208,39 @@
     </div>
   </div>
 
+  <div class="footer-key">
+    <span>Forgot your fingerprint key?</span>
+    <button class="key-btn" onclick="copyText('fingerprint', this, 'Copy Key')">Copy Key</button>
+    <div id="fingerprint" class="key-text">856ceffce2e6e12be4cafc7cfd64a4b96a0522a07fcd1d004e910cfcd4e6eae5</div>
+  </div>
+
   <script>
-    function copyCommand() {
-      const text = document.getElementById('cmdText').innerText;
+    function copyText(elementId, btn, originalText) {
+      const text = document.getElementById(elementId).innerText;
       navigator.clipboard.writeText(text).then(() => {
-        const btn = document.querySelector('.copy-btn');
-        btn.innerText = 'Copied!';
-        btn.style.backgroundColor = '#28a745';
-        btn.style.color = '#fff';
+        // Change button state
+        btn.innerText = (elementId === 'fingerprint') ? 'Key Copied!' : 'Copied!';
+        const originalBg = btn.style.backgroundColor;
+        const originalColor = btn.style.color;
+
+        if(elementId !== 'fingerprint') {
+          btn.style.backgroundColor = '#28a745';
+          btn.style.color = '#fff';
+        } else {
+          btn.style.background = '#fff';
+          btn.style.color = '#8b0000';
+        }
         
+        // Reset button state
         setTimeout(() => {
-          btn.innerText = 'Copy';
-          btn.style.backgroundColor = '#00ccff';
-          btn.style.color = '#000';
+          btn.innerText = originalText;
+          if(elementId !== 'fingerprint') {
+            btn.style.backgroundColor = '#00ccff';
+            btn.style.color = '#000';
+          } else {
+            btn.style.background = 'rgba(255,255,255,0.2)';
+            btn.style.color = '#fff';
+          }
         }, 2000);
       });
     }
