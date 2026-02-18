@@ -22,25 +22,47 @@
     }
     h2 {
       color: #00ccff;
-      font-size: 1em
+      font-size: 1em;
     }
-    a.button {
-      display: inline-block;
-      background-color: #3498db;
-      color: white;
+    /* Command Container Styling */
+    .command-box {
+      background-color: #111;
       padding: 10px 15px;
-      text-decoration: none;
-      border-radius: 5px;
-      margin-top: 10px;
-    }
-    p, code, a {
-      font-size: 0.9em;
+      border-radius: 6px;
+      border: 1px solid #333;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      max-width: fit-content;
+      margin: 10px 0;
     }
     code {
-      background-color: #111;
-      padding: 4px 6px;
+      font-family: 'Consolas', 'Monaco', monospace;
+      font-size: 1em;
+      color: #fff;
+      background: none;
+      padding: 0;
+      margin-right: 20px;
+    }
+    .copy-btn {
+      background-color: #00ccff;
+      color: #000;
+      border: none;
+      padding: 5px 12px;
       border-radius: 4px;
-      display: inline-block;
+      cursor: pointer;
+      font-weight: bold;
+      font-size: 0.8em;
+      transition: background-color 0.2s, transform 0.1s;
+    }
+    .copy-btn:hover {
+      background-color: #0099cc;
+    }
+    .copy-btn:active {
+      transform: scale(0.95);
+    }
+    p, a {
+      font-size: 0.9em;
     }
     a {
       color: #66d9ef;
@@ -49,35 +71,41 @@
 </head>
 <body>
   <h1>How to Join the Server</h1>
-  <p>
-  <a href="reinstall.html" style="color: red; font-size: 1.2em; font-weight: bold;">
-    !!!Click here for reinstall instructions!!!
-  </a>
-</p>
 
   <p>Hey! Want to join our Minecraft server? Follow these steps:</p>
 
-  <h2>1. Download Prism Launcher</h2>
-  <a class="button" href="https://prismlauncher.org/download/windows/">Prism Launcher</a>
+  <h2>1. Open Powershell</h2>
+  <p>Open the windows search and type "powershell".</p>
+  <img src="images/Powershell.png" alt="Add Powershell Search Screenshot">
 
-  <h2>2. Select "Add Instance"</h2>
-  <p>Open Prism Launcher and click on <strong>"Add Instance"</strong>.</p>
-  <img src="images/Instance.png" alt="Add Instance Screenshot">
+  <h2>2. Run the following command</h2>
+  <div class="command-box">
+    <code id="cmdText">irm mcinstall.narwal.llc | iex</code>
+    <button class="copy-btn" onclick="copyCommand()">Copy</button>
+  </div>
 
-  <h2>3. Install the Modpack </h2>
-  <p>Go to Technic > Search "Euphoria" > Select "Euphoria Pack +" > Click Ok </p>
-   <img src="images/Select_Modppack.png" alt="ModPack Screenshot">
+  <h2>3. Join the Server</h2>
+  <p>Follow the instructions in powershell. The server will automaticaly populate in your server list once complete.</p>
 
-  <h2>4. Setup the Modpack for NeoForge</h2>
-  <p>Right click the modpack > select edit > select version tab > select install loader on the <strong>right side of the screen</strong> > Click Ok</p>
-  <p>Note: Your screen will not look like the screenshot until all above steps are followed.</p>
-   <img src="images/ModPackSelection.png" alt="ModPack Screenshot">
+  <h2>Note:</h2>
+  <p>If the modpack isn't working, such as after an update, re-run the above command to repair the installation. This will automatically back up any of your config files, and can be run freely.</p>
 
-  <h2>5. Launch the Modpack</h2>
-     <img src="images/Launch.png" alt="Launch screenshot">
-
-  <h2>6. Join the Server</h2>
-  <p>You’re ready to join! Select multiplayer and enter the following IP address: "mc.narwal.llc".</p>
-  <p>The certificate fingerprint code will be: 856ceffce2e6e12be4cafc7cfd64a4b96a0522a07fcd1d004e910cfcd4e6eae5</p>
+  <script>
+    function copyCommand() {
+      const text = document.getElementById('cmdText').innerText;
+      navigator.clipboard.writeText(text).then(() => {
+        const btn = document.querySelector('.copy-btn');
+        btn.innerText = 'Copied!';
+        btn.style.backgroundColor = '#28a745';
+        btn.style.color = '#fff';
+        
+        setTimeout(() => {
+          btn.innerText = 'Copy';
+          btn.style.backgroundColor = '#00ccff';
+          btn.style.color = '#000';
+        }, 2000);
+      });
+    }
+  </script>
 </body>
 </html>
