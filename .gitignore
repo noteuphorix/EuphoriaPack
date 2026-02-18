@@ -1,0 +1,10 @@
+
+@"
+.vs/
+*.slnx.sqlite
+*.slnx.sqlite-journal
+FileContentIndex/
+"@ | Out-File -FilePath .gitignore -Encoding utf8
+
+git add .gitignore
+git commit -m "Add gitignore to stop tracking VS cache"
