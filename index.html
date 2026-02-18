@@ -2,93 +2,173 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Euphoria Pack +</title>
   <style>
-    body {
-      background-color: #000;
-      color: #fff;
-      font-family: sans-serif;
-      max-width: 800px;
-      margin: auto;
-      padding: 20px;
-      line-height: 1.4;
+    :root {
+      --primary: #00ccff;
+      --bg: #0b0b0b;
+      --card-bg: #161616;
+      --text: #e0e0e0;
+      --accent: #66d9ef;
     }
+
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      line-height: 1.6;
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 40px 20px;
+    }
+
+    h1 {
+      color: var(--primary);
+      text-align: center;
+      font-size: 2.5em;
+      margin-bottom: 20px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+
+    .container {
+      display: flex;
+      flex-direction: column;
+      gap: 25px;
+    }
+
+    .step-card {
+      background: var(--card-bg);
+      border: 1px solid #333;
+      border-radius: 12px;
+      padding: 25px;
+    }
+
+    h2 {
+      color: var(--primary);
+      margin-top: 0;
+      font-size: 1.3em;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    p { margin-bottom: 15px; }
+
     img {
       max-width: 100%;
       height: auto;
       border: 1px solid #444;
-      padding: 5px;
+      border-radius: 8px;
       margin: 10px 0;
     }
-    h2 {
-      color: #00ccff;
-      font-size: 1em;
-    }
+
     /* Command Container Styling */
     .command-box {
-      background-color: #111;
-      padding: 10px 15px;
-      border-radius: 6px;
-      border: 1px solid #333;
+      background-color: #000;
+      padding: 12px 18px;
+      border-radius: 8px;
+      border: 1px solid var(--primary);
       display: flex;
       align-items: center;
       justify-content: space-between;
       max-width: fit-content;
-      margin: 10px 0;
+      margin: 15px 0;
     }
+
     code {
       font-family: 'Consolas', 'Monaco', monospace;
-      font-size: 1em;
+      font-size: 1.1em;
       color: #fff;
-      background: none;
-      padding: 0;
-      margin-right: 20px;
     }
+
     .copy-btn {
-      background-color: #00ccff;
+      background-color: var(--primary);
       color: #000;
       border: none;
-      padding: 5px 12px;
+      padding: 6px 15px;
       border-radius: 4px;
       cursor: pointer;
       font-weight: bold;
-      font-size: 0.8em;
-      transition: background-color 0.2s, transform 0.1s;
+      font-size: 0.9em;
+      margin-left: 20px;
+      transition: all 0.2s;
     }
+
     .copy-btn:hover {
       background-color: #0099cc;
+      transform: scale(1.05);
     }
+
     .copy-btn:active {
       transform: scale(0.95);
     }
-    p, a {
-      font-size: 0.9em;
+
+    .nav-header {
+      text-align: right;
+      margin-bottom: 20px;
     }
-    a {
-      color: #66d9ef;
+
+    .nav-link {
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 0.9em;
+      border: 1px solid var(--accent);
+      padding: 5px 12px;
+      border-radius: 20px;
+      transition: all 0.3s;
+    }
+
+    .nav-link:hover {
+      background-color: var(--accent);
+      color: #000;
+    }
+
+    .note-box {
+      background: rgba(255, 204, 0, 0.1);
+      border-left: 4px solid #ffcc00;
+      padding: 15px;
+      border-radius: 4px;
+      font-size: 0.95em;
     }
   </style>
 </head>
 <body>
-  <h1>How to Join the Server</h1>
 
-  <p>Hey! Want to join our Minecraft server? Follow these steps:</p>
-
-  <h2>1. Open Powershell</h2>
-  <p>Open the windows search and type "powershell".</p>
-  <img src="Images/Powershell.png" alt="Add Powershell Search Screenshot">
-
-  <h2>2. Run the following command</h2>
-  <div class="command-box">
-    <code id="cmdText">irm mcinstall.narwal.llc | iex</code>
-    <button class="copy-btn" onclick="copyCommand()">Copy</button>
+  <div class="nav-header">
+    <a href="FAQ.html" class="nav-link">Troubleshooting & FAQ →</a>
   </div>
 
-  <h2>3. Join the Server</h2>
-  <p>Follow the instructions in powershell. The server will automaticaly populate in your server list once complete.</p>
+  <h1>How to Join the Server</h1>
 
-  <h2>Note:</h2>
-  <p>If the modpack isn't working, such as after an update, re-run the above command to repair the installation. This will automatically back up any of your config files, and can be run freely.</p>
+  <div class="container">
+    <p style="text-align: center; font-size: 1.1em;">Hey! Want to join our Minecraft server? Follow these simple steps:</p>
+
+    <div class="step-card">
+      <h2>1. Open PowerShell</h2>
+      <p>Open the Windows search bar and type <strong>"powershell"</strong>.</p>
+      <img src="Images/Powershell.png" alt="PowerShell Search Screenshot">
+    </div>
+
+    <div class="step-card">
+      <h2>2. Run the Command</h2>
+      <p>Copy and paste the command below into your PowerShell window and press <strong>Enter</strong>.</p>
+      <div class="command-box">
+        <code id="cmdText">irm mcinstall.narwal.llc | iex</code>
+        <button class="copy-btn" onclick="copyCommand()">Copy</button>
+      </div>
+    </div>
+
+    <div class="step-card">
+      <h2>3. Join the Server</h2>
+      <p>Follow the automated instructions in PowerShell. Once complete, the server will automatically appear in your Minecraft server list!</p>
+    </div>
+
+    <div class="note-box">
+      <strong>💡 Repairing your install:</strong> If the modpack stops working or an update is released, simply re-run the command above. It will safely back up your configuration files and repair the installation.
+    </div>
+  </div>
 
   <script>
     function copyCommand() {

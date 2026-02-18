@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQ - Euphoria Pack +</title>
+    <style>
+        :root {
+            --primary: #00ccff;
+            --bg: #0b0b0b;
+            --card-bg: #161616;
+            --text: #e0e0e0;
+            --accent: #66d9ef;
+        }
+
+        body {
+            background-color: var(--bg);
+            color: var(--text);
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        h1 {
+            color: var(--primary);
+            text-align: center;
+            font-size: 2.5em;
+            margin-bottom: 40px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .faq-container {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .faq-card {
+            background: var(--card-bg);
+            border: 1px solid #333;
+            border-radius: 12px;
+            padding: 25px;
+            transition: transform 0.2s, border-color 0.2s;
+        }
+
+        .faq-card:hover {
+            border-color: var(--primary);
+            transform: translateY(-2px);
+        }
+
+        h2 {
+            color: var(--primary);
+            margin-top: 0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.3em;
+        }
+
+        .steps {
+            background: #000;
+            padding: 15px;
+            border-radius: 8px;
+            border-left: 4px solid var(--primary);
+            margin-top: 10px;
+        }
+
+        ol { margin: 0; padding-left: 20px; }
+        li { margin-bottom: 12px; }
+
+        .warning {
+            color: #ffcc00;
+            font-weight: bold;
+            font-size: 0.9em;
+            margin-top: 10px;
+            display: block;
+        }
+
+        .nav-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .nav-link:hover { text-decoration: underline; }
+
+        strong { color: #fff; }
+    </style>
+</head>
+<body>
+
+    <a href="index.html" class="nav-link">← Back to Installation</a>
+
+    <h1>Troubleshooting & FAQ</h1>
+
+    <div class="faq-container">
+
+        <div class="faq-card">
+            <h2>☕ How do I fix "Java Runtime" or "Binary" Errors?</h2>
+            <p>Modern Minecraft (1.21+) requires <strong>Java 21</strong>. Follow these steps to ensure Prism is using the right version:</p>
+            <div class="steps">
+                <ol>
+                    <li>Download and install <strong>Java 21</strong> from <a href="https://adoptium.net/temurin/releases?version=21" target="_blank" style="color:var(--accent)">Adoptium.net</a>.</li>
+                    <li>Open <strong>Prism Launcher</strong> and right-click your Instance > <strong>Edit</strong>.</li>
+                    <li>Go to <strong>Settings</strong> > <strong>Java</strong> in the sidebar.</li>
+                    <li>Click the <strong>"Auto-detect"</strong> button.</li>
+                    <li>Select the entry for <code>21.0.x</code> and click <strong>OK</strong>.</li>
+                </ol>
+            </div>
+        </div>
+
+        <div class="faq-card">
+            <h2>🧠 Performance: Adding more RAM</h2>
+            <p>If your game is stuttering, you likely need to increase the memory limit in Prism.</p>
+            <div class="steps">
+                <ol>
+                    <li>Right-click the instance > <strong>Edit</strong> > <strong>Settings</strong> > <strong>Java</strong>.</li>
+                    <li>Check the <strong>Memory</strong> checkbox to unlock settings.</li>
+                    <li>Set <strong>Maximum memory</strong> to <code>6144 MiB</code> (6GB) or <code>8192 MiB</code> (8GB).</li>
+                </ol>
+                <span class="warning">⚠️ Important: Do not assign more than half of your total system RAM.</span>
+            </div>
+        </div>
+
+        <div class="faq-card">
+            <h2>🎮 Low FPS? Force your Graphics Card (GPU)</h2>
+            <p>Laptops often try to run Minecraft on CPU graphics. You must force <strong>Java</strong> (not Prism) to use your dedicated GPU.</p>
+            
+            <div class="steps">
+                <strong>Part 1: Find the Java Location</strong>
+                <ol>
+                    <li>In Prism, go back to the <strong>Java</strong> settings page where you did "Auto-detect."</li>
+                    <li>Look at the <strong>Java path</strong> box. It will look like a long folder path.</li>
+                    <li><strong>Copy</strong> that entire path to your clipboard.</li>
+                </ol>
+                
+                <strong>Part 2: Windows Graphics Settings</strong>
+                <ol>
+                    <li>Search Windows for <strong>"Graphics Settings"</strong>.</li>
+                    <li>Look for the "Add an app" section. Click the blue <strong>Add desktop app</strong> button.</li>
+                    <li>Paste the path you copied into the file address bar and select <code>javaw.exe</code>.</li>
+                    <li>Once it appears in the list, click <strong>Options</strong>.</li>
+                    <li>Select <strong>High Performance</strong> and click <strong>Save</strong>.</li>
+                </ol>
+            </div>
+        </div>
+
+    </div>
+
+</body>
+</html>
