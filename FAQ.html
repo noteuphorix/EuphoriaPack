@@ -3,190 +3,497 @@
 	<head>
 		<meta charset="UTF-8">
 			<meta name="viewport" content="width=device-width, initial-scale=1.0">
-				<title>FAQ - Euphoria Pack +</title>
-				<style>
-					:root {
-					--primary: #00ccff;
-					--bg: #0b0b0b;
-					--card-bg: #161616;
-					--text: #e0e0e0;
-					--accent: #66d9ef;
-					}
+				<title>FAQ — Euphoria Pack +</title>
+				<link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+					<style>
+						:root {
+						--primary: #00ccff;
+						--bg: #0b0b0b;
+						--card-bg: #111111;
+						--card-border: #1e1e1e;
+						--text: #c8c8c8;
+						--accent: #66d9ef;
+						--yellow: #ffcc00;
+						--green: #3ddc84;
+						}
 
-					body {
-					background-color: var(--bg);
-					color: var(--text);
-					font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-					line-height: 1.6;
-					max-width: 900px;
-					margin: 0 auto;
-					padding: 40px 20px;
-					}
+						* { box-sizing: border-box; }
 
-					h1 {
-					color: var(--primary);
-					text-align: center;
-					font-size: 2.5em;
-					margin-bottom: 40px;
-					text-transform: uppercase;
-					letter-spacing: 2px;
-					}
+						html {
+						min-height: 100vh;
+						background-color: var(--bg);
+						background-image:
+						radial-gradient(ellipse 80% 40% at 50% 0%, rgba(0, 204, 255, 0.07), transparent),
+						repeating-linear-gradient(
+						0deg,
+						transparent,
+						transparent 39px,
+						rgba(255,255,255,0.015) 39px,
+						rgba(255,255,255,0.015) 40px
+						);
+						background-attachment: fixed;
+						}
 
-					.faq-container {
-					display: flex;
-					flex-direction: column;
-					gap: 20px;
-					}
+						body {
+						background: transparent;
+						color: var(--text);
+						font-family: 'Inter', sans-serif;
+						line-height: 1.6;
+						max-width: 860px;
+						margin: 0 auto;
+						padding: 48px 24px 80px;
+						}
 
-					.faq-card {
-					background: var(--card-bg);
-					border: 1px solid #333;
-					border-radius: 12px;
-					padding: 25px;
-					transition: transform 0.2s, border-color 0.2s;
-					}
+						/* ── Header ── */
+						.site-header {
+						display: flex;
+						align-items: center;
+						justify-content: space-between;
+						margin-bottom: 52px;
+						}
 
-					.faq-card:hover {
-					border-color: var(--primary);
-					transform: translateY(-2px);
-					}
+						.logo-mark {
+						font-family: 'Space Mono', monospace;
+						font-size: 0.75em;
+						color: var(--primary);
+						letter-spacing: 3px;
+						text-transform: uppercase;
+						opacity: 0.7;
+						}
 
-					h2 {
-					color: var(--primary);
-					margin-top: 0;
-					display: flex;
-					align-items: center;
-					gap: 10px;
-					font-size: 1.3em;
-					}
+						.nav-link {
+						color: var(--accent);
+						text-decoration: none;
+						font-weight: 600;
+						font-size: 0.82em;
+						letter-spacing: 1px;
+						border: 1px solid rgba(102,217,239,0.3);
+						padding: 7px 16px;
+						border-radius: 99px;
+						transition: all 0.25s;
+						text-transform: uppercase;
+						}
 
-					.steps {
-					background: #000;
-					padding: 15px;
-					border-radius: 8px;
-					border-left: 4px solid var(--primary);
-					margin-top: 10px;
-					}
+						.nav-link:hover {
+						background-color: var(--accent);
+						color: #000;
+						border-color: var(--accent);
+						}
 
-					ol { margin: 0; padding-left: 20px; }
-					li { margin-bottom: 12px; }
+						/* ── Hero ── */
+						.hero {
+						text-align: center;
+						margin-bottom: 56px;
+						}
 
-					.warning {
-					color: #ffcc00;
-					font-weight: bold;
-					font-size: 0.9em;
-					margin-top: 10px;
-					display: block;
-					}
+						h1 {
+						font-family: 'Inter', sans-serif;
+						font-weight: 700;
+						color: #fff;
+						font-size: clamp(2.2em, 5vw, 3.4em);
+						letter-spacing: -1px;
+						margin: 0 0 12px;
+						line-height: 1.1;
+						}
 
-					.nav-link {
-					display: inline-block;
-					margin-bottom: 20px;
-					color: var(--accent);
-					text-decoration: none;
-					font-weight: bold;
-					}
+						h1 span { color: var(--primary); }
 
-					.nav-link:hover { text-decoration: underline; }
+						.hero-sub {
+						font-size: 1.05em;
+						color: #888;
+						max-width: 480px;
+						margin: 0 auto;
+						}
 
-					strong { color: #fff; }
-				</style>
-			</head>
+						/* ── FAQ Cards ── */
+						.faq-container {
+						display: flex;
+						flex-direction: column;
+						gap: 16px;
+						}
+
+						.faq-card {
+						background: var(--card-bg);
+						border: 1px solid var(--card-border);
+						border-radius: 16px;
+						overflow: hidden;
+						transition: border-color 0.2s;
+						}
+
+						.faq-card:hover { border-color: #2a2a2a; }
+
+						/* Accordion trigger */
+						.faq-trigger {
+						width: 100%;
+						background: none;
+						border: none;
+						padding: 24px 28px;
+						cursor: pointer;
+						display: flex;
+						align-items: center;
+						gap: 16px;
+						text-align: left;
+						color: inherit;
+						}
+
+						.faq-icon {
+						width: 40px;
+						height: 40px;
+						border-radius: 10px;
+						display: flex;
+						align-items: center;
+						justify-content: center;
+						font-size: 1.2em;
+						flex-shrink: 0;
+						}
+
+						.faq-icon.java   { background: rgba(255, 160, 0, 0.12); }
+						.faq-icon.ram    { background: rgba(61, 220, 132, 0.12); }
+						.faq-icon.gpu    { background: rgba(0, 204, 255, 0.12); }
+
+						.faq-trigger-text { flex: 1; }
+
+						.faq-label {
+						font-family: 'Space Mono', monospace;
+						font-size: 0.65em;
+						letter-spacing: 2px;
+						text-transform: uppercase;
+						color: #555;
+						margin-bottom: 3px;
+						}
+
+						.faq-title {
+						font-weight: 700;
+						font-size: 1em;
+						color: #fff;
+						line-height: 1.3;
+						}
+
+						.faq-chevron {
+						width: 20px;
+						height: 20px;
+						color: #444;
+						flex-shrink: 0;
+						transition: transform 0.3s ease, color 0.2s;
+						}
+
+						.faq-card.open .faq-chevron {
+						transform: rotate(180deg);
+						color: var(--primary);
+						}
+
+						/* Accordion body */
+						.faq-body {
+						max-height: 0;
+						overflow: hidden;
+						transition: max-height 0.4s ease;
+						background: var(--card-bg);
+						border-top: 0px solid #1a1a1a;
+						}
+
+						.faq-card.open .faq-body {
+						max-height: 800px;
+						border-top: 1px solid #1a1a1a;
+						}
+
+						.faq-body-inner {
+						padding: 20px 28px 28px;
+						}
+
+						.faq-body-inner p {
+						margin: 0 0 16px;
+						color: var(--text);
+						font-size: 0.95em;
+						}
+
+						/* Steps block */
+						.steps {
+						background: #000;
+						border-radius: 10px;
+						border: 1px solid #1e1e1e;
+						overflow: hidden;
+						margin-top: 4px;
+						}
+
+						.steps-label {
+						font-family: 'Space Mono', monospace;
+						font-size: 0.65em;
+						letter-spacing: 2px;
+						text-transform: uppercase;
+						color: var(--primary);
+						padding: 10px 16px 6px;
+						opacity: 0.7;
+						}
+
+						.steps ol {
+						margin: 0;
+						padding: 0 16px 16px 36px;
+						}
+
+						.steps li {
+						margin-bottom: 10px;
+						font-size: 0.9em;
+						color: #bbb;
+						padding-left: 4px;
+						}
+
+						.steps li:last-child { margin-bottom: 0; }
+
+						.steps li strong { color: #fff; }
+
+						.steps + .steps { margin-top: 12px; }
+
+						.steps-part-label {
+						font-family: 'Space Mono', monospace;
+						font-size: 0.65em;
+						letter-spacing: 2px;
+						text-transform: uppercase;
+						color: #555;
+						padding: 12px 16px 4px;
+						border-top: 1px solid #1a1a1a;
+						}
+
+						.steps-part-label:first-child { border-top: none; }
+
+						code {
+						font-family: 'Space Mono', monospace;
+						font-size: 0.85em;
+						color: var(--accent);
+						background: rgba(102,217,239,0.08);
+						padding: 2px 6px;
+						border-radius: 4px;
+						}
+
+						a { color: var(--accent); text-decoration: none; }
+						a:hover { text-decoration: underline; }
+
+						/* Warning box */
+						.warning-box {
+						display: flex;
+						align-items: flex-start;
+						gap: 10px;
+						background: rgba(255, 204, 0, 0.06);
+						border: 1px solid rgba(255, 204, 0, 0.2);
+						border-left: 3px solid var(--yellow);
+						padding: 12px 14px;
+						border-radius: 8px;
+						margin-top: 12px;
+						font-size: 0.88em;
+						color: #ccc;
+						}
+
+						.warning-box .w-icon { font-size: 1em; flex-shrink: 0; margin-top: 1px; }
+
+						/* Quick tip pills */
+						display: flex;
+						flex-wrap: wrap;
+						gap: 8px;
+						margin-top: 12px;
+						}
+
+						font-family: 'Space Mono', monospace;
+						font-size: 0.72em;
+						background: rgba(0, 204, 255, 0.07);
+						border: 1px solid rgba(0, 204, 255, 0.15);
+						color: var(--primary);
+						padding: 5px 12px;
+						border-radius: 99px;
+						letter-spacing: 0.5px;
+						}
+					</style>
+				</head>
 	<body>
 
-		<a href="index.html" class="nav-link">← Back to Installation</a>
+		<header class="site-header">
+			<span class="logo-mark">Euphoria Pack +</span>
+			<a href="index.html" class="nav-link">← Back to Install</a>
+		</header>
 
-		<h1>Troubleshooting & FAQ</h1>
+		<div class="hero">
+			<h1>
+				Troubleshooting <span>&amp; FAQ</span>
+			</h1>
+			<p class="hero-sub">Something broken? Find your fix below.</p>
+		</div>
 
 		<div class="faq-container">
 
-			<div class="faq-card">
-				<h2>☕ How do I fix "Java Runtime" or "Binary" Errors?</h2>
-				<p>
-					Modern Minecraft (1.21+) requires <strong>Java 21</strong>. Follow these steps to ensure Prism is using the right version:
-				</p>
-				<div class="steps">
-					<ol>
-						<li>
-							Download and install <strong>Java 21</strong> from <a href="https://adoptium.net/temurin/releases?version=21" target="_blank" style="color:var(--accent)">Adoptium.net</a>.
-						</li>
-						<li>
-							Open <strong>Prism Launcher</strong> and right-click your Instance > <strong>Edit</strong>.
-						</li>
-						<li>
-							Go to <strong>Settings</strong> > <strong>Java</strong> in the sidebar.
-						</li>
-						<li>
-							Click the <strong>"Auto-detect"</strong> button.
-						</li>
-						<li>
-							Select the entry for <code>21.0.x</code> and click <strong>OK</strong>.
-						</li>
-					</ol>
+			<!-- Java -->
+			<div class="faq-card" id="card-java">
+				<button class="faq-trigger" onclick="toggle('card-java')">
+					<div class="faq-icon java">
+						<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="color:#ffa500">
+							<path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/>
+							<line x1="12" y1="9" x2="12" y2="13"/>
+							<line x1="12" y1="17" x2="12.01" y2="17"/>
+						</svg>
+					</div>
+					<div class="faq-trigger-text">
+						<div class="faq-label">Error Fix</div>
+						<div class="faq-title">Java Runtime or Binary Errors</div>
+					</div>
+					<svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+						<polyline points="6 9 12 15 18 9"/>
+					</svg>
+				</button>
+				<div class="faq-body">
+					<div class="faq-body-inner">
+						<p>
+							Modern Minecraft (1.21+) requires <strong style="color:#fff">Java 21</strong>. If Prism is pointing to the wrong version, follow these steps.
+						</p>
+						<div class="steps">
+							<div class="steps-label">Steps</div>
+							<ol>
+								<li>
+									Download and install <strong>Java 21</strong> from <a href="https://adoptium.net/temurin/releases?version=21" target="_blank">Adoptium.net</a>.
+								</li>
+								<li>
+									Open <strong>Prism Launcher</strong> and right-click your instance → <strong>Edit</strong>.
+								</li>
+								<li>
+									Go to <strong>Settings → Java</strong> in the sidebar.
+								</li>
+								<li>
+									Click the <strong>Auto-detect</strong> button.
+								</li>
+								<li>
+									Select the <code>21.0.x</code> entry and click <strong>OK</strong>.
+								</li>
+							</ol>
+						</div>
+					</div>
 				</div>
 			</div>
+		</div>
 
-			<div class="faq-card">
-				<h2>🧠 Performance: Adding more RAM</h2>
-				<p>If your game is stuttering, you likely need to increase the memory limit in Prism.</p>
-				<div class="steps">
-					<ol>
-						<li>
-							Right-click the instance > <strong>Edit</strong> > <strong>Settings</strong> > <strong>Java</strong>.
-						</li>
-						<li>
-							Check the <strong>Memory</strong> checkbox to unlock settings.
-						</li>
-						<li>
-							Set <strong>Maximum memory</strong> to <code>6144 MiB</code> (6GB) or <code>8192 MiB</code> (8GB).
-						</li>
-					</ol>
-					<span class="warning">⚠️ Important: Do not assign more than half of your total system RAM.</span>
+		<!-- RAM -->
+		<div class="faq-card" id="card-ram">
+			<button class="faq-trigger" onclick="toggle('card-ram')">
+				<div class="faq-icon ram">
+					<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="color:#3ddc84">
+						<rect x="4" y="4" width="16" height="16" rx="2"/>
+						<rect x="9" y="9" width="6" height="6"/>
+						<line x1="9" y1="1" x2="9" y2="4"/>
+						<line x1="15" y1="1" x2="15" y2="4"/>
+						<line x1="9" y1="20" x2="9" y2="23"/>
+						<line x1="15" y1="20" x2="15" y2="23"/>
+						<line x1="20" y1="9" x2="23" y2="9"/>
+						<line x1="20" y1="14" x2="23" y2="14"/>
+						<line x1="1" y1="9" x2="4" y2="9"/>
+						<line x1="1" y1="14" x2="4" y2="14"/>
+					</svg>
+				</div>
+				<div class="faq-trigger-text">
+					<div class="faq-label">Performance</div>
+					<div class="faq-title">Game Stuttering — Increase RAM</div>
+				</div>
+				<svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+					<polyline points="6 9 12 15 18 9"/>
+				</svg>
+			</button>
+			<div class="faq-body">
+				<div class="faq-body-inner">
+					<p>If Minecraft is stuttering or freezing, the memory limit in Prism is probably too low. Bump it up.</p>
+					<div class="steps">
+						<div class="steps-label">Steps</div>
+						<ol>
+							<li>
+								Right-click your instance → <strong>Edit</strong> → <strong>Settings</strong> → <strong>Java</strong>.
+							</li>
+							<li>
+								Check the <strong>Memory</strong> checkbox to unlock the sliders.
+							</li>
+							<li>
+								Set <strong>Maximum memory</strong> to <code>6144 MiB</code> (6 GB) or <code>8192 MiB</code> (8 GB).
+							</li>
+						</ol>
+					</div>
+					<div class="warning-box">
+						<span class="w-icon">
+							<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#ffcc00" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+								<path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/>
+								<line x1="12" y1="9" x2="12" y2="13"/>
+								<line x1="12" y1="17" x2="12.01" y2="17"/>
+							</svg>
+						</span>
+						<span>Never assign more than half your total system RAM — leaving headroom for Windows and other apps is important.</span>
+					</div>
 				</div>
 			</div>
+		</div>
 
-			<div class="faq-card">
-				<h2>🎮 Low FPS? Force your Graphics Card (GPU)</h2>
-				<p>
-					Laptops often try to run Minecraft on CPU graphics. You must force <strong>Java</strong> (not Prism) to use your dedicated GPU.
-				</p>
-
-				<div class="steps">
-					<strong>Part 1: Find the Java Location</strong>
-					<ol>
-						<li>
-							In Prism, go back to the <strong>Java</strong> settings page where you did "Auto-detect."
-						</li>
-						<li>
-							Look at the <strong>Java path</strong> box. It will look like a long folder path.
-						</li>
-						<li>
-							<strong>Copy</strong> that entire path to your clipboard.
-						</li>
-					</ol>
-
-					<strong>Part 2: Windows Graphics Settings</strong>
-					<ol>
-						<li>
-							Search Windows for <strong>"Graphics Settings"</strong>.
-						</li>
-						<li>
-							Look for the "Add an app" section. Click the blue <strong>Add desktop app</strong> button.
-						</li>
-						<li>
-							Paste the path you copied into the file address bar and select <code>javaw.exe</code>.
-						</li>
-						<li>
-							Once it appears in the list, click <strong>Options</strong>.
-						</li>
-						<li>
-							Select <strong>High Performance</strong> and click <strong>Save</strong>.
-						</li>
-					</ol>
+		<!-- GPU -->
+		<div class="faq-card" id="card-gpu">
+			<button class="faq-trigger" onclick="toggle('card-gpu')">
+				<div class="faq-icon gpu">
+					<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="color:#00ccff">
+						<rect x="2" y="3" width="20" height="14" rx="2"/>
+						<line x1="8" y1="21" x2="16" y2="21"/>
+						<line x1="12" y1="17" x2="12" y2="21"/>
+					</svg>
+				</div>
+				<div class="faq-trigger-text">
+					<div class="faq-label">Performance</div>
+					<div class="faq-title">Low FPS — Force Dedicated GPU</div>
+				</div>
+				<svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+					<polyline points="6 9 12 15 18 9"/>
+				</svg>
+			</button>
+			<div class="faq-body">
+				<div class="faq-body-inner">
+					<p>
+						Laptops often run Minecraft on the weak integrated graphics instead of the dedicated GPU. You need to force <strong style="color:#fff">Java</strong> (not Prism) to use the right card.
+					</p>
+					<div class="steps">
+						<div class="steps-part-label">Part 1 — Find the Java Path</div>
+						<ol>
+							<li>
+								In Prism, open <strong>Java</strong> settings (same page as Auto-detect).
+							</li>
+							<li>
+								Find the <strong>Java path</strong> field — it'll be a long folder path.
+							</li>
+							<li>
+								<strong>Copy</strong> the entire path to your clipboard.
+							</li>
+						</ol>
+						<div class="steps-part-label">Part 2 — Windows Graphics Settings</div>
+						<ol>
+							<li>
+								Search Windows for <strong>Graphics Settings</strong> and open it.
+							</li>
+							<li>
+								Under "Add an app", click <strong>Add desktop app</strong>.
+							</li>
+							<li>
+								Paste the copied path into the file bar and select <code>javaw.exe</code>.
+							</li>
+							<li>
+								Once it appears in the list, click <strong>Options</strong>.
+							</li>
+							<li>
+								Select <strong>High Performance</strong> and click <strong>Save</strong>.
+							</li>
+						</ol>
+					</div>
 				</div>
 			</div>
+		</div>
+		</div>
 
 		</div>
+
+		<script>
+			function toggle(id) {
+			const card = document.getElementById(id);
+			const isOpen = card.classList.contains('open');
+			// Close all
+			document.querySelectorAll('.faq-card').forEach(c => c.classList.remove('open'));
+			// Open clicked if it wasn't already open
+			if (!isOpen) card.classList.add('open');
+			}
+		</script>
 
 	</body>
 </html>
