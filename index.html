@@ -652,12 +652,15 @@
 						<div class="manual-step-content">
 							<div class="manual-step-title">Import into Prism & Play</div>
 							<p class="manual-step-desc">
-								Open Prism Launcher → <strong style="color:#fff">Add Instance</strong> → choose <strong style="color:#fff">Import</strong> → paste the following link:
+								Open Prism Launcher → <strong style="color:#fff">Add Instance</strong> → choose <strong style="color:#fff">Import</strong> → paste the modpack link:
 							</p>
-							<div class="link-copy-box">
-								<code id="modpackLink">https://www.dropbox.com/scl/fi/m7zdgvxgixozv48kmq4qb/Euphoria-Pack.zip?rlkey=zmh041l0v1zkwa1de53quomcv&st=buwlrzog&dl=1</code>
-								<button class="link-copy-btn" onclick="copyLink(this)">Copy Link</button>
-							</div>
+							<button class="manual-btn" style="cursor:pointer; border:none;" onclick="copyLink(this)">
+								<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+									<rect x="9" y="9" width="13" height="13" rx="2" ry="2"/>
+									<path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
+								</svg>
+								Copy Modpack Link
+							</button>
 							<p class="manual-step-desc" style="margin-top: 12px; margin-bottom: 0;">
 								Click <strong style="color:#fff">OK</strong>, wait for it to finish importing, then hit Play!
 							</p>
@@ -707,15 +710,20 @@
 			}
 
 			function copyLink(btn) {
-			const text = document.getElementById('modpackLink').innerText;
-			navigator.clipboard.writeText(text).then(() => {
-			btn.innerText = 'Copied!';
-			btn.style.backgroundColor = '#28a745';
-			btn.style.color = '#fff';
+			const url = 'https://www.dropbox.com/scl/fi/m7zdgvxgixozv48kmq4qb/Euphoria-Pack.zip?rlkey=zmh041l0v1zkwa1de53quomcv&st=buwlrzog&dl=1';
+			navigator.clipboard.writeText(url).then(() => {
+			const origHTML = btn.innerHTML;
+			btn.innerHTML = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+				<polyline points="20 6 9 17 4 12"/>
+			</svg> Copied!';
+			btn.style.background = 'rgba(61, 220, 132, 0.15)';
+			btn.style.borderColor = 'rgba(61, 220, 132, 0.4)';
+			btn.style.color = '#3ddc84';
 			setTimeout(() => {
-			btn.innerText = 'Copy Link';
-			btn.style.backgroundColor = '#00ccff';
-			btn.style.color = '#000';
+			btn.innerHTML = origHTML;
+			btn.style.background = '';
+			btn.style.borderColor = '';
+			btn.style.color = '';
 			}, 2000);
 			});
 			}
