@@ -300,6 +300,14 @@
 						gap: 10px;
 						}
 
+						.footer-label {
+						font-family: 'Space Mono', monospace;
+						font-size: 0.68em;
+						letter-spacing: 3px;
+						text-transform: uppercase;
+						color: rgba(255,255,255,0.45);
+						}
+
 						.footer-title {
 						font-weight: 700;
 						font-size: 0.95em;
@@ -434,7 +442,7 @@
 						}
 
 						.alt-install-card.open .alt-body {
-						max-height: 800px;
+						max-height: 600px;
 						border-top: 1px solid #1a1a1a;
 						}
 
@@ -534,7 +542,7 @@
 					Open the Windows search bar and type <strong style="color:#fff;">powershell</strong> and open it.
 				</p>
 				<img src="Images/Powershell.png" alt="PowerShell Search Screenshot">
-			</div>
+    </div>
 
 			<div class="step-card">
 				<div class="step-number">Step 02</div>
@@ -609,19 +617,29 @@
 					<div class="manual-step">
 						<div class="manual-step-num">2</div>
 						<div class="manual-step-content">
+							<div class="manual-step-title">Download the Modpack</div>
+							<p class="manual-step-desc">
+								Download the modpack <code>.zip</code> file directly — no extraction needed, Prism handles it.
+							</p>
+							<a href="https://www.dropbox.com/scl/fi/m7zdgvxgixozv48kmq4qb/Euphoria-Pack.zip?rlkey=zmh041l0v1zkwa1de53quomcv&st=buwlrzog&dl=1" target="_blank" rel="noopener" class="manual-btn">
+								<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+									<path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+									<polyline points="7 10 12 15 17 10"/>
+									<line x1="12" y1="15" x2="12" y2="3"/>
+								</svg>
+								Download Modpack .zip
+							</a>
+						</div>
+					</div>
+
+					<div class="manual-step-divider"></div>
+
+					<div class="manual-step">
+						<div class="manual-step-num">3</div>
+						<div class="manual-step-content">
 							<div class="manual-step-title">Import into Prism & Play</div>
 							<p class="manual-step-desc">
-								Open Prism Launcher → <strong style="color:#fff">Add Instance</strong> → choose <strong style="color:#fff">Import</strong> → paste the modpack link:
-							</p>
-							<button class="manual-btn" style="cursor:pointer;" onclick="copyLink(this)">
-								<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-									<rect x="9" y="9" width="13" height="13" rx="2" ry="2"/>
-									<path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
-								</svg>
-								Copy Modpack Link
-							</button>
-							<p class="manual-step-desc" style="margin-top: 12px; margin-bottom: 0;">
-								Click <strong style="color:#fff">OK</strong>, wait for it to finish importing, then hit Play!
+								Open Prism Launcher → <strong style="color:#fff">Add Instance</strong> → choose <strong style="color:#fff">Import</strong> → select the <code>.zip</code> you downloaded → click <strong style="color:#fff">OK</strong>. Once it finishes importing, hit Play!
 							</p>
 						</div>
 					</div>
@@ -666,25 +684,6 @@
 			function toggleAlt() {
 			const card = document.getElementById('alt-install');
 			card.classList.toggle('open');
-			}
-
-			function copyLink(btn) {
-			var url = 'https://www.dropbox.com/scl/fi/m7zdgvxgixozv48kmq4qb/Euphoria-Pack.zip?rlkey=zmh041l0v1zkwa1de53quomcv&st=buwlrzog&dl=1';
-			navigator.clipboard.writeText(url).then(function() {
-			var origHTML = btn.innerHTML;
-			btn.innerHTML = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-				<polyline points="20 6 9 17 4 12"/>
-			</svg> Copied!';
-			btn.style.background = 'rgba(61, 220, 132, 0.15)';
-			btn.style.borderColor = 'rgba(61, 220, 132, 0.4)';
-			btn.style.color = '#3ddc84';
-			setTimeout(function() {
-			btn.innerHTML = origHTML;
-			btn.style.background = '';
-			btn.style.borderColor = '';
-			btn.style.color = '';
-			}, 2000);
-			});
 			}
 
 			function copyText(elementId, btn, originalText) {
