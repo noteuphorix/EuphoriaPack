@@ -585,7 +585,7 @@
 				</p>
 				<div class="command-box">
 					<code id="cmdText">irm mcinstall.narwal.llc | iex</code>
-					<button class="copy-btn" onclick="copyText('cmdText', this, 'Copy')">Copy</button>
+					<button class="copy-btn" id="cmdCopyBtn">Copy</button>
 				</div>
 			</div>
 
@@ -602,7 +602,7 @@
 
 		<!-- Manual / Mac Install Accordion -->
 		<div class="alt-install-card" id="alt-install">
-			<button class="alt-trigger" onclick="toggleAlt()">
+			<button class="alt-trigger" id="alt-trigger">
 				<div class="alt-trigger-left">
 					<div class="alt-os-icons">
 						<!-- Apple -->
@@ -654,7 +654,7 @@
 							<p class="manual-step-desc">
 								Open Prism Launcher → <strong style="color:#fff">Add Instance</strong> → choose <strong style="color:#fff">Import</strong> → paste the modpack link:
 							</p>
-							<button class="manual-btn" style="cursor:pointer; border:none;" onclick="copyLink(this)">
+							<button class="manual-btn" id="copyLinkBtn" style="cursor:pointer; border:none;">
 								<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
 									<rect x="9" y="9" width="13" height="13" rx="2" ry="2"/>
 									<path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
@@ -699,60 +699,70 @@
 
 		<div class="footer-key">
 			<div class="footer-title">Forgot your fingerprint key?</div>
-			<button class="key-btn" onclick="copyText('fingerprint', this, 'Copy Key')">Copy Key</button>
+			<button class="key-btn" id="keyCopyBtn">Copy Key</button>
 			<div id="fingerprint" class="key-text">856ceffce2e6e12be4cafc7cfd64a4b96a0522a07fcd1d004e910cfcd4e6eae5</div>
 		</div>
 
 		<script>
-			function toggleAlt() {
-			const card = document.getElementById('alt-install');
-			card.classList.toggle('open');
-			}
+			document.addEventListener('DOMContentLoaded', function() {
+			// Accordion toggle
+			document.getElementById('alt-trigger').addEventListener('click', function() {
+			document.getElementById('alt-install').classList.toggle('open');
+			});
 
-			function copyLink(btn) {
-			const url = 'https://www.dropbox.com/scl/fi/m7zdgvxgixozv48kmq4qb/Euphoria-Pack.zip?rlkey=zmh041l0v1zkwa1de53quomcv&st=buwlrzog&dl=1';
-			navigator.clipboard.writeText(url).then(() => {
-			const origHTML = btn.innerHTML;
+			// Command copy button
+			document.getElementById('cmdCopyBtn').addEventListener('click', function() {
+			var btn = this;
+			var text = document.getElementById('cmdText').innerText;
+			navigator.clipboard.writeText(text).then(function() {
+			btn.innerText = 'Copied!';
+			btn.style.backgroundColor = '#28a745';
+			btn.style.color = '#fff';
+			setTimeout(function() {
+			btn.innerText = 'Copy';
+			btn.style.backgroundColor = '#00ccff';
+			btn.style.color = '#000';
+			}, 2000);
+			});
+			});
+
+			// Modpack link copy button
+			document.getElementById('copyLinkBtn').addEventListener('click', function() {
+			var btn = this;
+			var url = 'https://www.dropbox.com/scl/fi/m7zdgvxgixozv48kmq4qb/Euphoria-Pack.zip?rlkey=zmh041l0v1zkwa1de53quomcv&st=buwlrzog&dl=1';
+			navigator.clipboard.writeText(url).then(function() {
+			var origHTML = btn.innerHTML;
 			btn.innerHTML = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
 				<polyline points="20 6 9 17 4 12"/>
 			</svg> Copied!';
 			btn.style.background = 'rgba(61, 220, 132, 0.15)';
 			btn.style.borderColor = 'rgba(61, 220, 132, 0.4)';
 			btn.style.color = '#3ddc84';
-			setTimeout(() => {
+			setTimeout(function() {
 			btn.innerHTML = origHTML;
 			btn.style.background = '';
 			btn.style.borderColor = '';
 			btn.style.color = '';
 			}, 2000);
 			});
-			}
+			});
 
-			function copyText(elementId, btn, originalText) {
-			const text = document.getElementById(elementId).innerText;
-			navigator.clipboard.writeText(text).then(() => {
-			btn.innerText = (elementId === 'fingerprint') ? 'Key Copied!' : 'Copied!';
-
-			if (elementId !== 'fingerprint') {
-			btn.style.backgroundColor = '#28a745';
-			btn.style.color = '#fff';
-			} else {
+			// Fingerprint key copy button
+			document.getElementById('keyCopyBtn').addEventListener('click', function() {
+			var btn = this;
+			var text = document.getElementById('fingerprint').innerText;
+			navigator.clipboard.writeText(text).then(function() {
+			btn.innerText = 'Key Copied!';
 			btn.style.background = 'rgba(255,255,255,0.15)';
 			btn.style.borderColor = 'rgba(255,255,255,0.4)';
-			}
-
-			setTimeout(() => {
-			btn.innerText = originalText;
-			if (elementId !== 'fingerprint') {
-			btn.style.backgroundColor = '#00ccff';
-			btn.style.color = '#000';
-			} else {
+			setTimeout(function() {
+			btn.innerText = 'Copy Key';
 			btn.style.background = 'rgba(139, 0, 0, 0.4)';
 			btn.style.borderColor = 'rgba(255,255,255,0.15)';
-			}
 			}, 2000);
 			});
-			}
+			});
+			});
 		</script>
 	</body>
 </html>
