@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Narwal — Game Servers</title>
+		<link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+		<style>
+			:root {
+				--primary: #00ccff;
+				--bg: #0b0b0b;
+				--card-bg: #111111;
+				--card-border: #1e1e1e;
+				--text: #c8c8c8;
+				--accent: #66d9ef;
+			}
+
+			* { box-sizing: border-box; }
+
+			body {
+				background-color: var(--bg);
+				background-image:
+					radial-gradient(ellipse 80% 50% at 50% -10%, rgba(0, 204, 255, 0.07), transparent),
+					repeating-linear-gradient(
+						0deg,
+						transparent,
+						transparent 39px,
+						rgba(255,255,255,0.015) 39px,
+						rgba(255,255,255,0.015) 40px
+					);
+				color: var(--text);
+				font-family: 'Inter', sans-serif;
+				line-height: 1.6;
+				max-width: 860px;
+				margin: 0 auto;
+				padding: 48px 24px 80px;
+				min-height: 100vh;
+				display: flex;
+				flex-direction: column;
+			}
+
+			.site-header {
+				display: flex;
+				align-items: center;
+				justify-content: space-between;
+				margin-bottom: 52px;
+			}
+
+			.logo-mark {
+				font-family: 'Space Mono', monospace;
+				font-size: 0.75em;
+				color: var(--primary);
+				letter-spacing: 3px;
+				text-transform: uppercase;
+				opacity: 0.7;
+			}
+
+			.hero {
+				text-align: center;
+				margin-bottom: 64px;
+				flex: 0;
+			}
+
+			h1 {
+				font-family: 'Inter', sans-serif;
+				font-weight: 700;
+				color: #fff;
+				font-size: clamp(2.2em, 5vw, 3.4em);
+				letter-spacing: -1px;
+				margin: 0 0 12px;
+				line-height: 1.1;
+			}
+
+			h1 span { color: var(--primary); }
+
+			.hero-sub {
+				font-size: 1.05em;
+				color: #888;
+				max-width: 400px;
+				margin: 0 auto;
+			}
+
+			.game-grid {
+				display: grid;
+				grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+				gap: 20px;
+				flex: 1;
+			}
+
+			.game-card {
+				background: var(--card-bg);
+				border: 1px solid var(--card-border);
+				border-radius: 20px;
+				padding: 36px 32px;
+				text-decoration: none;
+				color: inherit;
+				display: flex;
+				flex-direction: column;
+				gap: 20px;
+				transition: border-color 0.25s, transform 0.2s;
+				position: relative;
+				overflow: hidden;
+			}
+
+			.game-card::before {
+				content: '';
+				position: absolute;
+				inset: 0;
+				border-radius: 20px;
+				opacity: 0;
+				transition: opacity 0.3s;
+			}
+
+			.game-card.minecraft::before {
+				background: radial-gradient(ellipse 60% 40% at 50% 0%, rgba(61, 220, 132, 0.06), transparent);
+			}
+
+			.game-card.ss14::before {
+				background: radial-gradient(ellipse 60% 40% at 50% 0%, rgba(0, 204, 255, 0.06), transparent);
+			}
+
+			.game-card:hover {
+				border-color: #2e2e2e;
+				transform: translateY(-2px);
+			}
+
+			.game-card:hover::before { opacity: 1; }
+
+			.game-card.minecraft:hover { border-color: rgba(61, 220, 132, 0.35); }
+			.game-card.ss14:hover      { border-color: rgba(0, 204, 255, 0.35); }
+
+			.game-icon {
+				width: 56px;
+				height: 56px;
+				border-radius: 14px;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				font-size: 1.6em;
+			}
+
+			.game-icon.minecraft {
+				background: rgba(61, 220, 132, 0.1);
+				border: 1px solid rgba(61, 220, 132, 0.2);
+			}
+
+			.game-icon.ss14 {
+				background: rgba(0, 204, 255, 0.1);
+				border: 1px solid rgba(0, 204, 255, 0.2);
+			}
+
+			.game-label {
+				font-family: 'Space Mono', monospace;
+				font-size: 0.65em;
+				letter-spacing: 2px;
+				text-transform: uppercase;
+				margin-bottom: 6px;
+			}
+
+			.game-label.minecraft { color: rgba(61, 220, 132, 0.7); }
+			.game-label.ss14      { color: rgba(0, 204, 255, 0.7); }
+
+			.game-title {
+				font-size: 1.35em;
+				font-weight: 700;
+				color: #fff;
+				margin: 0 0 6px;
+				letter-spacing: -0.3px;
+			}
+
+			.game-desc {
+				font-size: 0.9em;
+				color: #666;
+				margin: 0;
+				line-height: 1.5;
+			}
+
+			.game-arrow {
+				margin-top: auto;
+				display: flex;
+				align-items: center;
+				gap: 8px;
+				font-size: 0.82em;
+				font-weight: 600;
+				letter-spacing: 0.5px;
+				text-transform: uppercase;
+				transition: gap 0.2s;
+			}
+
+			.game-arrow.minecraft { color: rgba(61, 220, 132, 0.6); }
+			.game-arrow.ss14      { color: rgba(0, 204, 255, 0.6); }
+
+			.game-card:hover .game-arrow { gap: 12px; }
+
+			.arrow-icon {
+				width: 16px;
+				height: 16px;
+				transition: transform 0.2s;
+			}
+
+			.game-card:hover .arrow-icon { transform: translateX(2px); }
+
+			.ip-chip {
+				display: inline-block;
+				font-family: 'Space Mono', monospace;
+				font-size: 0.72em;
+				padding: 3px 10px;
+				border-radius: 6px;
+				margin-top: 6px;
+			}
+
+			.ip-chip.minecraft {
+				background: rgba(61, 220, 132, 0.08);
+				border: 1px solid rgba(61, 220, 132, 0.2);
+				color: rgba(61, 220, 132, 0.8);
+			}
+
+			.ip-chip.ss14 {
+				background: rgba(0, 204, 255, 0.08);
+				border: 1px solid rgba(0, 204, 255, 0.2);
+				color: rgba(0, 204, 255, 0.8);
+			}
+		</style>
+	</head>
+	<body>
+
+		<header class="site-header">
+			<span class="logo-mark">Narwal</span>
+		</header>
+
+		<div class="hero">
+			<h1>Pick your <span>game</span></h1>
+			<p class="hero-sub">Choose a server to get the setup guide.</p>
+		</div>
+
+		<div class="game-grid">
+
+			<a href="minecraft.html" class="game-card minecraft">
+				<div class="game-icon minecraft">⛏️</div>
+				<div>
+					<div class="game-label minecraft">Modded</div>
+					<div class="game-title">Minecraft</div>
+					<p class="game-desc">Custom modpack with automated installer. Running Euphoria Pack+.</p>
+					<span class="ip-chip minecraft">mc.narwal.llc</span>
+				</div>
+				<div class="game-arrow minecraft">
+					Get setup guide
+					<svg class="arrow-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+						<line x1="5" y1="12" x2="19" y2="12"/>
+						<polyline points="12 5 19 12 12 19"/>
+					</svg>
+				</div>
+			</a>
+
+			<a href="spacestation14.html" class="game-card ss14">
+				<div class="game-icon ss14">🚀</div>
+				<div>
+					<div class="game-label ss14">Roleplay</div>
+					<div class="game-title">Space Station 14</div>
+					<p class="game-desc">Free to play via Steam. Jump in and survive the chaos of the station.</p>
+					<span class="ip-chip ss14">ss14.narwal.llc</span>
+				</div>
+				<div class="game-arrow ss14">
+					Get setup guide
+					<svg class="arrow-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+						<line x1="5" y1="12" x2="19" y2="12"/>
+						<polyline points="12 5 19 12 12 19"/>
+					</svg>
+				</div>
+			</a>
+
+		</div>
+
+	</body>
+</html>
