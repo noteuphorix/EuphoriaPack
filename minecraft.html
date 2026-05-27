@@ -40,7 +40,6 @@
 						padding: 48px 24px 0;
 						}
 
-						/* ── Header ── */
 						.site-header {
 						display: flex;
 						align-items: center;
@@ -76,7 +75,6 @@
 						border-color: var(--accent);
 						}
 
-						/* ── Hero ── */
 						.hero {
 						text-align: center;
 						margin-bottom: 56px;
@@ -92,9 +90,7 @@
 						line-height: 1.1;
 						}
 
-						h1 span {
-						color: var(--primary);
-						}
+						h1 span { color: var(--primary); }
 
 						.hero-sub {
 						font-size: 1.05em;
@@ -103,7 +99,6 @@
 						margin: 0 auto;
 						}
 
-						/* ── Step Cards ── */
 						.container {
 						display: flex;
 						flex-direction: column;
@@ -120,9 +115,7 @@
 						transition: border-color 0.2s;
 						}
 
-						.step-card:hover {
-						border-color: #2a2a2a;
-						}
+						.step-card:hover { border-color: #2a2a2a; }
 
 						.step-number {
 						font-family: 'Space Mono', monospace;
@@ -153,7 +146,6 @@
 						margin: 12px 0 0;
 						}
 
-						/* ── Command Box ── */
 						.command-box {
 						background-color: #000;
 						padding: 12px 16px;
@@ -189,7 +181,6 @@
 						.copy-btn:hover { background-color: #0099cc; }
 						.copy-btn:active { transform: scale(0.96); }
 
-						/* ── Note Box ── */
 						.note-box {
 						background: rgba(255, 204, 0, 0.06);
 						border: 1px solid rgba(255, 204, 0, 0.2);
@@ -200,7 +191,6 @@
 						margin-bottom: 16px;
 						}
 
-						/* ── Discord Card ── */
 						.discord-card {
 						background: linear-gradient(135deg, #1a1c2e 0%, #111318 100%);
 						border: 1px solid rgba(88, 101, 242, 0.35);
@@ -284,7 +274,6 @@
 
 						.discord-btn:active { transform: translateY(0); }
 
-						/* ── Footer ── */
 						.footer-key {
 						background: linear-gradient(135deg, #1a0000 0%, #0d0000 100%);
 						border: 1px solid rgba(139, 0, 0, 0.4);
@@ -337,15 +326,10 @@
 						transition: all 0.2s;
 						}
 
-						.key-btn:hover {
-						background: rgba(139, 0, 0, 0.7);
-						}
+						.key-btn:hover { background: rgba(139, 0, 0, 0.7); }
 
-						.server-ip code {
-						color: var(--accent);
-						}
+						.server-ip code { color: var(--accent); }
 
-						/* ── Manual / Mac Install Accordion ── */
 						.alt-install-card {
 						background: var(--card-bg);
 						border: 1px solid var(--card-border);
@@ -402,9 +386,7 @@
 						background: rgba(255,255,255,0.06);
 						}
 
-						.alt-install-card:hover .alt-os-icon svg {
-						fill: #888;
-						}
+						.alt-install-card:hover .alt-os-icon svg { fill: #888; }
 
 						.alt-trigger-title {
 						font-weight: 700;
@@ -446,9 +428,7 @@
 						border-top: 1px solid #1a1a1a;
 						}
 
-						.alt-body-inner {
-						padding: 24px 28px 28px;
-						}
+						.alt-body-inner { padding: 24px 28px 28px; }
 
 						.manual-step {
 						display: flex;
@@ -523,7 +503,10 @@
 
 		<header class="site-header">
 			<span class="logo-mark">Euphoria Pack +</span>
-			<a href="FAQ.html" class="nav-link">Troubleshooting & FAQ →</a>
+			<div style="display:flex;gap:12px;align-items:center;">
+				<a href="FAQ.html" class="nav-link">Troubleshooting & FAQ →</a>
+				<a href="index.html" class="nav-link">← All Games</a>
+			</div>
 		</header>
 
 		<div class="hero">
@@ -542,7 +525,7 @@
 					Open the Windows search bar and type <strong style="color:#fff;">powershell</strong> and open it.
 				</p>
 				<img src="Images/Powershell.png" alt="PowerShell Search Screenshot">
-    </div>
+			</div>
 
 			<div class="step-card">
 				<div class="step-number">Step 02</div>
@@ -567,18 +550,15 @@
 
 		</div>
 
-		<!-- Manual / Mac Install Accordion -->
 		<div class="alt-install-card" id="alt-install">
 			<button class="alt-trigger" onclick="toggleAlt()">
 				<div class="alt-trigger-left">
 					<div class="alt-os-icons">
-						<!-- Apple -->
 						<div class="alt-os-icon">
 							<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
 								<path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.33-3.14-2.57C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
 							</svg>
 						</div>
-						<!-- Linux (Tux) -->
 						<div class="alt-os-icon">
 							<svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
 								<path d="M8.996 4.497c.104-.076.1-.168.186-.158s.022.102-.098.207c-.12.104-.308.243-.46.323-.291.152-.631.336-.993.336s-.647-.167-.853-.33c-.102-.082-.186-.162-.248-.221-.11-.086-.096-.207-.052-.204.075.01.087.109.134.153.064.06.144.137.241.214.195.154.454.304.778.304s.702-.19.932-.32c.13-.073.297-.204.433-.304M7.34 3.781c.055-.02.123-.031.174-.003.011.006.024.021.02.034-.012.038-.074.032-.11.05-.032.017-.057.052-.093.054-.034 0-.086-.012-.09-.046-.007-.044.058-.072.1-.089m.581-.003c.05-.028.119-.018.173.003.041.017.106.045.1.09-.004.033-.057.046-.09.045-.036-.002-.062-.037-.093-.053-.036-.019-.098-.013-.11-.051-.004-.013.008-.028.02-.034"/>
@@ -621,9 +601,7 @@
 							<p class="manual-step-desc">
 								Open Prism Launcher → <strong style="color:#fff">Add Instance</strong> → choose <strong style="color:#fff">Import</strong> → paste the <strong>Modpack link</strong> → click <strong style="color:#fff">OK</strong>. Once it finishes importing, hit Play!
 							</p>
-
 							<span id="manualModpackLink" style="display:none;">https://www.dropbox.com/scl/fi/m7zdgvxgixozv48kmq4qb/Euphoria-Pack.zip?rlkey=zmh041l0v1zkwa1de53quomcv&st=0rzc3y84&dl=1</span>
-
 							<button class="manual-btn" onclick="copyText('manualModpackLink', this, 'Copy Modpack Link')">
 								Copy Modpack Link
 							</button>
@@ -638,7 +616,6 @@
 			<strong style="color:#ffcc00;">💡 Repairing your install:</strong> If the modpack stops working or an update is released, simply re-run the command above. It will safely back up your configuration files and repair the installation.
 		</div>
 
-		<!-- Discord Contact Card -->
 		<div class="discord-card">
 			<div class="discord-info">
 				<div class="discord-icon">
@@ -676,7 +653,6 @@
 			const text = document.getElementById(elementId).innerText;
 			navigator.clipboard.writeText(text).then(() => {
 			btn.innerText = (elementId === 'fingerprint') ? 'Key Copied!' : 'Copied!';
-
 			if (elementId !== 'fingerprint') {
 			btn.style.backgroundColor = '#28a745';
 			btn.style.color = '#fff';
@@ -684,7 +660,6 @@
 			btn.style.background = 'rgba(255,255,255,0.15)';
 			btn.style.borderColor = 'rgba(255,255,255,0.4)';
 			}
-
 			setTimeout(() => {
 			btn.innerText = originalText;
 			if (elementId !== 'fingerprint') {
