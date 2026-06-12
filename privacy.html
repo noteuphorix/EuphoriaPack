@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Privacy Policy — Narwal LLC</title>
+		<link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+		<style>
+			:root {
+			--primary: #00ccff;
+			--bg: #0b0b0b;
+			--card-bg: #111111;
+			--card-border: #1e1e1e;
+			--text: #c8c8c8;
+			--accent: #66d9ef;
+			--green: #3ddc84;
+			--muted: #555;
+			}
+
+			* { box-sizing: border-box; }
+
+			body {
+			background-color: var(--bg);
+			background-image:
+				radial-gradient(ellipse 80% 50% at 50% -10%, rgba(0, 204, 255, 0.07), transparent),
+				repeating-linear-gradient(
+				0deg,
+				transparent,
+				transparent 39px,
+				rgba(255,255,255,0.015) 39px,
+				rgba(255,255,255,0.015) 40px
+				);
+			color: var(--text);
+			font-family: 'Inter', sans-serif;
+			line-height: 1.6;
+			max-width: 860px;
+			margin: 0 auto;
+			padding: 48px 24px 80px;
+			}
+
+			.site-header {
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			margin-bottom: 52px;
+			}
+
+			.logo-mark {
+			font-family: 'Space Mono', monospace;
+			font-size: 0.75em;
+			color: var(--primary);
+			letter-spacing: 3px;
+			text-transform: uppercase;
+			opacity: 0.7;
+			}
+
+			.nav-link {
+			color: var(--accent);
+			text-decoration: none;
+			font-weight: 600;
+			font-size: 0.82em;
+			letter-spacing: 1px;
+			border: 1px solid rgba(102,217,239,0.3);
+			padding: 7px 16px;
+			border-radius: 99px;
+			transition: all 0.25s;
+			text-transform: uppercase;
+			}
+
+			.nav-link:hover {
+			background-color: var(--accent);
+			color: #000;
+			border-color: var(--accent);
+			}
+
+			/* Hero */
+			.hero {
+			margin-bottom: 48px;
+			}
+
+			.hero-eyebrow {
+			font-family: 'Space Mono', monospace;
+			font-size: 0.7em;
+			color: var(--primary);
+			letter-spacing: 3px;
+			text-transform: uppercase;
+			opacity: 0.7;
+			margin-bottom: 14px;
+			}
+
+			h1 {
+			font-family: 'Inter', sans-serif;
+			font-weight: 700;
+			color: #fff;
+			font-size: clamp(2em, 4.5vw, 3em);
+			letter-spacing: -1px;
+			margin: 0 0 16px;
+			line-height: 1.1;
+			}
+
+			h1 span { color: var(--primary); }
+
+			.hero-meta {
+			font-size: 0.85em;
+			color: var(--muted);
+			}
+
+			/* Summary strip */
+			.summary-strip {
+			display: flex;
+			gap: 12px;
+			margin-bottom: 32px;
+			flex-wrap: wrap;
+			}
+
+			.badge {
+			display: inline-flex;
+			align-items: center;
+			gap: 7px;
+			background: rgba(61, 220, 132, 0.07);
+			border: 1px solid rgba(61, 220, 132, 0.2);
+			color: var(--green);
+			padding: 8px 14px;
+			border-radius: 99px;
+			font-size: 0.8em;
+			font-weight: 600;
+			letter-spacing: 0.3px;
+			}
+
+			.badge svg {
+			width: 13px;
+			height: 13px;
+			flex-shrink: 0;
+			}
+
+			/* Divider */
+			.divider {
+			height: 1px;
+			background: var(--card-border);
+			margin: 40px 0;
+			}
+
+			/* Sections */
+			.section {
+			margin-bottom: 40px;
+			}
+
+			.section-label {
+			font-family: 'Space Mono', monospace;
+			font-size: 0.68em;
+			color: var(--primary);
+			letter-spacing: 2.5px;
+			text-transform: uppercase;
+			opacity: 0.7;
+			margin-bottom: 8px;
+			}
+
+			h2 {
+			color: #fff;
+			font-size: 1.1em;
+			font-weight: 700;
+			letter-spacing: 0.3px;
+			margin: 0 0 14px;
+			}
+
+			p {
+			margin: 0 0 12px;
+			font-size: 0.95em;
+			line-height: 1.7;
+			}
+
+			p:last-child { margin-bottom: 0; }
+
+			/* Data table */
+			.data-table {
+			width: 100%;
+			border-collapse: collapse;
+			margin-top: 16px;
+			font-size: 0.88em;
+			}
+
+			.data-table th {
+			text-align: left;
+			font-family: 'Space Mono', monospace;
+			font-size: 0.72em;
+			letter-spacing: 1.5px;
+			text-transform: uppercase;
+			color: var(--muted);
+			padding: 10px 16px;
+			border-bottom: 1px solid var(--card-border);
+			font-weight: 400;
+			}
+
+			.data-table td {
+			padding: 14px 16px;
+			border-bottom: 1px solid rgba(30,30,30,0.8);
+			vertical-align: top;
+			color: var(--text);
+			line-height: 1.5;
+			}
+
+			.data-table tr:last-child td { border-bottom: none; }
+
+			.data-table tr:hover td { background: rgba(255,255,255,0.015); }
+
+			.data-table td:first-child {
+			color: #fff;
+			font-weight: 600;
+			white-space: nowrap;
+			width: 30%;
+			}
+
+			.pill {
+			display: inline-block;
+			padding: 2px 10px;
+			border-radius: 99px;
+			font-size: 0.8em;
+			font-weight: 700;
+			font-family: 'Space Mono', monospace;
+			}
+
+			.pill-yes {
+			background: rgba(61, 220, 132, 0.1);
+			border: 1px solid rgba(61, 220, 132, 0.25);
+			color: var(--green);
+			}
+
+			.pill-no {
+			background: rgba(255,255,255,0.04);
+			border: 1px solid rgba(255,255,255,0.1);
+			color: var(--muted);
+			}
+
+			/* Contact card */
+			.contact-card {
+			background: var(--card-bg);
+			border: 1px solid var(--card-border);
+			border-radius: 16px;
+			padding: 28px 32px;
+			margin-top: 40px;
+			}
+
+			.contact-card p { color: #888; }
+
+			.contact-card a {
+			color: var(--accent);
+			text-decoration: none;
+			}
+
+			.contact-card a:hover { text-decoration: underline; }
+		</style>
+	</head>
+	<body>
+
+		<header class="site-header">
+			<span class="logo-mark">Narwal LLC</span>
+			<a href="index.html" class="nav-link">← All Games</a>
+		</header>
+
+		<div class="hero">
+			<div class="hero-eyebrow">Legal</div>
+			<h1>Privacy <span>Policy</span></h1>
+			<p class="hero-meta">Effective date: June 12, 2025 &nbsp;·&nbsp; Applies to all Narwal LLC game servers</p>
+		</div>
+
+		<div class="summary-strip">
+			<span class="badge">
+				<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+					<polyline points="3 8 6.5 11.5 13 4.5"/>
+				</svg>
+				No marketing use
+			</span>
+			<span class="badge">
+				<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+					<polyline points="3 8 6.5 11.5 13 4.5"/>
+				</svg>
+				No analytics tracking
+			</span>
+			<span class="badge">
+				<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+					<polyline points="3 8 6.5 11.5 13 4.5"/>
+				</svg>
+				Never sold or shared
+			</span>
+			<span class="badge">
+				<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+					<polyline points="3 8 6.5 11.5 13 4.5"/>
+				</svg>
+				Only what the server needs
+			</span>
+		</div>
+
+		<div class="divider"></div>
+
+		<div class="section">
+			<div class="section-label">Overview</div>
+			<h2>The short version</h2>
+			<p>We collect only what is necessary to run our game servers. That means things like your character data, preferences, and playtime — the information the server software stores by default so that your progress is saved between sessions. Nothing beyond that is collected, and what is collected is never used for marketing, advertising, analytics, or sold to any third party.</p>
+		</div>
+
+		<div class="section">
+			<div class="section-label">What we collect</div>
+			<h2>Data collected by default</h2>
+			<p>Our servers run on Space Station 14 and Minecraft server software. These platforms store a standard set of data as part of normal operation. We do not extend or supplement this with any additional data collection.</p>
+
+			<table class="data-table">
+				<thead>
+					<tr>
+						<th>Data</th>
+						<th>Why it's stored</th>
+						<th>Collected</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>Character data</td>
+						<td>Saves your in-game character, appearance, and job preferences between sessions</td>
+						<td><span class="pill pill-yes">Yes</span></td>
+					</tr>
+					<tr>
+						<td>Playtime records</td>
+						<td>Tracks time played per role, used for job unlock requirements</td>
+						<td><span class="pill pill-yes">Yes</span></td>
+					</tr>
+					<tr>
+						<td>Account identifiers</td>
+						<td>Links your in-game session to your authenticated account</td>
+						<td><span class="pill pill-yes">Yes</span></td>
+					</tr>
+					<tr>
+						<td>Ban and admin records</td>
+						<td>Standard server moderation logs</td>
+						<td><span class="pill pill-yes">Yes</span></td>
+					</tr>
+					<tr>
+						<td>Marketing or ad data</td>
+						<td>—</td>
+						<td><span class="pill pill-no">Never</span></td>
+					</tr>
+					<tr>
+						<td>Analytics or tracking</td>
+						<td>—</td>
+						<td><span class="pill pill-no">Never</span></td>
+					</tr>
+					<tr>
+						<td>Data sold to third parties</td>
+						<td>—</td>
+						<td><span class="pill pill-no">Never</span></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+
+		<div class="divider"></div>
+
+		<div class="section">
+			<div class="section-label">How it's used</div>
+			<h2>Server operations only</h2>
+			<p>Any data stored is used exclusively to make the server function — saving your character, enforcing bans, and keeping your progress intact. We do not use it for anything else. We do not run analytics pipelines, build user profiles, or share data with advertisers or data brokers.</p>
+		</div>
+
+		<div class="section">
+			<div class="section-label">Third parties</div>
+			<h2>No selling, no sharing</h2>
+			<p>Your data is not sold, licensed, or shared with any third party. The only external services involved are the underlying game platforms (Space Station 14 authentication and Minecraft account authentication) which operate under their own respective privacy policies.</p>
+		</div>
+
+		<div class="section">
+			<div class="section-label">Changes</div>
+			<h2>Policy updates</h2>
+			<p>If this policy ever changes, the effective date at the top of this page will be updated. We'll also announce any meaningful changes in our Discord. Continuing to use the server after a change takes effect constitutes acceptance of the updated policy.</p>
+		</div>
+
+		<div class="contact-card">
+			<div class="section-label">Contact</div>
+			<h2>Questions?</h2>
+			<p>If you have any questions about how your data is handled, the best place to reach us is our Discord server. We're happy to answer anything.</p>
+			<p><a href="https://discord.gg/fUKE54qFTa" target="_blank" rel="noopener">Join our Discord →</a></p>
+		</div>
+
+	</body>
+</html>
